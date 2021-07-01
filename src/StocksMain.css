@@ -1,0 +1,44 @@
+.stockmain-watch, .stockmain-own {
+    font-size: .7rem;
+}
+
+.indexName {
+    font-size: .7rem;
+    border-bottom: 1px green solid;
+}
+
+.stockmain-index {
+    background-color: white;
+    margin-top: 20px;
+}
+
+h4 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.stock-heading {
+    text-align: center;
+}
+
+.EmptyMain {
+    margin-top: 20px;
+}
+
+.no-index {
+   margin-top: 10px;
+   color: lightcoral; 
+}
+
+.no-stock-own, .no-stock-watch {
+    color: lightcoral;
+    margin-top: 50px;
+}
+
+.reload {
+    margin-top: 10px;
+}
+
+.main-three-buttons {
+    margin-top: 20px;
+}

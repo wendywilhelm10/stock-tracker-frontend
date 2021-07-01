@@ -1,0 +1,14 @@
+.HomePage {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.HomePageButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.home-btn {
+    margin-left: 20px;
+}

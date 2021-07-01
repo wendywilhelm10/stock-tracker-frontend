@@ -1,0 +1,36 @@
+h3 {
+    margin-top: 50px;
+    text-align: left;
+}
+
+form {
+    display: block;
+    margin-top: 0px;
+}
+
+.ProfileFormLabel {
+    font-weight: bold;
+    font-size: 1.2rem;
+    float: left;
+}
+
+.ProfileErr {
+    color: red;
+}
+
+.profile-btn {
+    margin-top: 10px;
+    float: right;
+}
+
+.profile-cancel-btn {
+    margin-top: 10px;
+    float: right;
+    margin-left: 10px;
+}
+
+#save-profile-success {
+    float: right;
+    margin-top: 20px;
+    color: green;
+}

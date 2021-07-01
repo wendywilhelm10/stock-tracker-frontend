@@ -1,0 +1,89 @@
+.stockwatch-card {
+    padding: 5px;
+}
+
+.stockwatch-symbol {
+    text-align: left;
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: .8rem;
+    color: #4d6ea3;
+}
+
+.stockwatch-name {
+    text-align: left;
+    padding-left: 0px;
+    font-size: .7rem;
+}
+
+.stockwatch-right {
+    text-align: right;
+    font-size: .8rem;
+}
+
+.stockdelete-card {
+    padding: 5px;
+}
+
+.stockdelete-symbol {
+    text-align: left;
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #4d6ea3;
+}
+
+.stockdelete-name {
+    text-align: left;
+    font-size: .8rem;
+    padding-left: 0px;
+}
+
+.stockdelete-right {
+    text-align: right;
+}
+
+.watchhead {
+    border: 1px grey solid;
+    border-radius: 5px;
+}
+
+.watch-title {
+    padding-bottom: 5px;
+    color: blue;
+}
+
+.watchhead-row {
+    margin-bottom: 5px;
+    font-size: .8rem;
+}
+
+.watchheaddel-row {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.watchhead-symbol {
+    text-align: left;
+    padding-left: 0px;
+    font-weight: bold;
+}
+
+.watchhead-right {
+    text-align: right;
+    font-weight: bold;
+}
+
+.watch-detail {
+    border-top: 1px lightgray solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.watch-trash {
+    color: red;
+}
+
+.watchdetail-row {
+    font-size: 1rem;
+}

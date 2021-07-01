@@ -1,0 +1,94 @@
+.StockOwn {
+    font-size: .8rem;
+}
+
+.stockown-right {
+    text-align: right;
+}
+
+.stockown-symbol {
+    text-align: left;
+    padding-left: 0px;
+    font-weight: bold;
+    color: #4d6ea3;
+}
+
+.stockown-name {
+    text-align: left;
+    padding-left: 0px;
+    font-size: .8rem;
+}
+
+.stockown-card {
+    padding: 5px;
+}
+
+.stockowndel-card {
+    padding: 5px;
+}
+
+.stockdelete-symbol {
+    text-align: left;
+    padding-left: 0px;
+    font-weight: bold;
+    font-size: .8rem;
+    color: #4d6ea3;
+}
+
+.stockdelete-name {
+    text-align: left;
+    padding-left: 0px;
+}
+
+.stockdelete-right {
+    text-align: right;
+    font-size: .8rem;
+}
+
+.stockowndel-name {
+    text-align: left;
+    font-size: .8rem;
+}
+
+.stockown-delete {
+    margin-top: 10px;
+    height: 30px;
+    padding-top: 0px;
+}
+
+.ownhead-row {
+    margin-bottom: 5px;
+    font-size: .8rem;
+}
+
+.ownheaddel-row {
+    margin-bottom: 5px;
+    font-size: .8rem;
+}
+
+.own-detail {
+    border-top: 1px lightgray solid;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.ownhead {
+    border: 1px grey solid;
+    border-radius: 5px;
+}
+
+.own-title {
+    padding-bottom: 5px;
+    color: blue;
+}
+
+.ownhead-symbol {
+    text-align: left;
+    padding-left: 0px;
+    font-weight: bold;
+}
+
+.ownhead-right {
+    text-align: right;
+    font-weight: bold;
+}

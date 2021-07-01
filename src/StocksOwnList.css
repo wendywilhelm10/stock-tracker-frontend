@@ -1,0 +1,21 @@
+h3 {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    margin-left: 15px;
+    text-align: left;
+}
+
+.StockOwnLabel {
+    font-weight: bold;
+    font-size: 1.2rem;
+    float: left;
+}
+
+.StockErr {
+    color: red;
+}
+
+.own-add {
+    margin-top: 10px;
+    float: right;
+}

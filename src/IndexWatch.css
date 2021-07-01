@@ -1,0 +1,34 @@
+ul {
+    list-style-type: none;
+    padding-top: 20px;
+    padding-left: 50px;
+}
+
+.index-label {
+    padding-left: 30px;
+    font-size: 1rem;
+}
+
+.index-watch-header {
+    text-align: center;
+}
+
+.index-list {
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.index-btn {
+    float: right;
+}
+
+.index-cancel-btn {
+    float: right;
+    margin-left: 10px;
+}
+
+#save-success {
+    margin-top: 10px;
+    color: green;
+    float: right;
+}
