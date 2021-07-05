@@ -18,11 +18,14 @@ class StockTrackerApi {
                 this.token = stockObj.token;
             }
         }
-        const headers = { Authorization: `Bearer ${StockTrackerApi.token}`};
-        const params = {}
+        const headers = { 'Access-Control-Allow-Origin': '*',
+                          'Content-Type': 'application/json',
+                          Authorization: `Bearer ${StockTrackerApi.token}`};
+        const params = {};
+        const mode = 'no-cors';
 
         try {
-            const resp = await axios({ url, method, data, params, headers });
+            const resp = await axios({ url, mode, method, data, params, headers });
             return resp.data
         } catch (e) {
             let message = e.response;
