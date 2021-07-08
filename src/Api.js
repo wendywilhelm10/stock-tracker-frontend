@@ -39,6 +39,7 @@ class StockTrackerApi {
     }
 
     static async signup(username, password, firstName, lastName, email) {
+        console.log('in signup method from front end');
         const data = {username, password, firstName, lastName, email}
         const method = "post"
         try {
