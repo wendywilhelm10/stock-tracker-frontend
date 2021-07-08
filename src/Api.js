@@ -11,6 +11,7 @@ class StockTrackerApi {
 
     static async request(endpoint, data={}, method="get") {
         // const url = `${BASE_URL}/${endpoint}`
+        console.log('in request function');
         const url = `${BASE_URL}${endpoint}`
         if (typeof this.token === 'undefined') {
             if (localStorage.getItem('stocktracker')) {
