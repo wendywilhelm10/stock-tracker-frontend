@@ -30,7 +30,7 @@ class StockTrackerApi {
         // const mode = 'no-cors';
 
         try {
-            const resp = await axios({ url, method, data, params, headers });
+            const resp = await axios({ url, method, data, params, headers, crossDomain: true });
             return resp.data
         } catch (e) {
             let message = e.response;
