@@ -10,7 +10,8 @@ class StockTrackerApi {
     }
 
     static async request(endpoint, data={}, method="get") {
-        const url = `${BASE_URL}/${endpoint}`
+        // const url = `${BASE_URL}/${endpoint}`
+        const url = `${BASE_URL}${endpoint}`
         if (typeof this.token === 'undefined') {
             if (localStorage.getItem('stocktracker')) {
                 const stocktracker = localStorage.getItem('stocktracker');
@@ -18,12 +19,12 @@ class StockTrackerApi {
                 this.token = stockObj.token;
             }
         }
-        const headers = { 'Access-Control-Allow-Credentials': true,
-                          'Access-Control-Allow-Origin': 'https://stock-tracker-front.herokuapp.com',
-                          'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE',
-                          'Access-Control-Allow-Headers': 'application/json',
-                          Authorization: `Bearer ${StockTrackerApi.token}`};
-        // const headers = { Authorization: `Bearer ${StockTrackerApi.token}`};
+        // const headers = { 'Access-Control-Allow-Credentials': true,
+        //                   'Access-Control-Allow-Origin': 'https://stock-tracker-front.herokuapp.com',
+        //                   'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE',
+        //                   'Access-Control-Allow-Headers': 'application/json',
+        //                   Authorization: `Bearer ${StockTrackerApi.token}`};
+        const headers = { Authorization: `Bearer ${StockTrackerApi.token}`};
         const params = {};
         // const mode = 'no-cors';
 
