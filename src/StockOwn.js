@@ -11,6 +11,12 @@ function StockOwn({stockOwnData, showDelete}) {
     const {deleteStockOwn} = useContext(StockContext);
 
     let displayDate;
+    let totPrevClose = 0;
+    let totPrice = 0;
+    let totTodayGainLoss = 0;
+    let totTotalGainLoss = 0;
+    let totCurrValue = 0;
+    let totPricePaid = 0;
 
     for (let i = 0; i < stockOwnData.length; i++) {
         const currPrice = Math.round((stockOwnData[i].price + Number.EPSILON) * 100) / 100;
@@ -37,6 +43,14 @@ function StockOwn({stockOwnData, showDelete}) {
         totalPercent = Math.round((totalPercent + Number.EPSILON) * 100) / 100;
         stockOwnData[i].totalPercent = totalPercent;
 
+        let previousClose = Math.round((stockOwnData[i].previousClose + Number.EPSILON) * 100) / 100;
+        totPrevClose += previousClose;
+        totPrice += stockOwnData[i].price;
+        totTodayGainLoss += todayGainLoss;
+        totTotalGainLoss += totalGainLoss;
+        totCurrValue += currentValue;
+        totPricePaid += stockOwnData[i].paidValue;
+
         if (stockOwnData[i].date.length >= 10) {
             displayDate = stockOwnData[i].date.substr(0, 10);
         } else {
@@ -45,10 +59,17 @@ function StockOwn({stockOwnData, showDelete}) {
         stockOwnData[i].displayDate = displayDate;
     }
 
-    console.log('stock own data after for loop ', stockOwnData);
+    totTodayGainLoss = Math.round((totTodayGainLoss + Number.EPSILON) * 100) / 100;
+    totTotalGainLoss = Math.round((totTotalGainLoss + Number.EPSILON) * 100) / 100;
+    totCurrValue = Math.round((totCurrValue + Number.EPSILON) * 100) / 100;
+        
+    let totTodayPercent = ((totPrice - totPrevClose) / totPrevClose) * 100;
+    totTodayPercent = Math.round((totTodayPercent + Number.EPSILON) * 100) / 100;
+    console.log('totTodayPercent ', totTodayPercent);
+    let totTotalPercent = ((totCurrValue - totPricePaid) / totPricePaid) * 100;
+    totTotalPercent = Math.round((totTotalPercent + Number.EPSILON) * 100) / 100;;
 
     async function handleDelete(id) {
-        console.log('id to delete ', id);
         const el = document.getElementById(id);
         const resp = await Api.deleteOwn(id);
         
@@ -100,19 +121,19 @@ function StockOwn({stockOwnData, showDelete}) {
                                             <br></br>
                                             <div className='col-2 stockdelete-name'>{s.name}</div>
                                             {s.change >= 0 &&
-                                                <div className='col-1 stockdelete-right green-text'>{s.change}</div>
+                                                <div className='col-1 stockdelete-right green-text'>+{s.change}</div>
                                             }
                                             {s.change < 0 &&
                                                 <div className='col-1 stockdelete-right red-text'>{s.change}</div>
                                             }
                                             {s.changePercent >= 0 &&
-                                                <div className='col-2 stockdelete-right green-text'>{s.changePercent}%</div>
+                                                <div className='col-2 stockdelete-right green-text'>+{s.changePercent}%</div>
                                             }
                                             {s.changePercent < 0 &&
                                                 <div className='col-2 stockdelete-right red-text'>{s.changePercent}%</div>
                                             }
                                             {s.totalPercent >= 0 &&
-                                                <div className='col-2 stockdelete-right green-text'>{s.totalPercent}%</div>
+                                                <div className='col-2 stockdelete-right green-text'>+{s.totalPercent}%</div>
                                             }
                                             {s.totalPercent < 0 &&
                                                 <div className='col-2 stockdelete-right red-text'>{s.totalPercent}%</div>
@@ -121,6 +142,36 @@ function StockOwn({stockOwnData, showDelete}) {
                                     </div>
                                 ))
                             }
+                            <div className='row ownheaddel-row owntotal'>
+                                <div className='col-2 ownhead-symbol'>Account Total</div>
+                                {totTodayGainLoss >= 0 &&
+                                    <div className='col-3 ownhead-right green-text'><CurrencyFormat value={totTodayGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div> 
+                                }
+                                {totTodayGainLoss < 0 &&
+                                    <div className='col-3 ownhead-right red-text'><CurrencyFormat value={totTodayGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div> 
+                                }
+                                {totTotalGainLoss >= 0 &&
+                                    <div className='col-2 ownhead-right green-text'><CurrencyFormat value={totTotalGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                                }
+                                {totTotalGainLoss < 0 &&
+                                    <div className='col-2 ownhead-right red-text'><CurrencyFormat value={totTotalGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                                }
+                                <div className='col-2 ownhead-right'><CurrencyFormat value={totCurrValue} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            </div>
+                            <div className='row'>
+                                {totTodayPercent >= 0 &&
+                                    <div className='col-5 ownhead-right green-text'>+{totTodayPercent}%</div>
+                                }
+                                {totTodayPercent < 0 &&
+                                    <div className='col-5 ownhead-right red-text'>{totTodayPercent}%</div>
+                                }
+                                {totTotalPercent >= 0 &&
+                                    <div className='col-2 ownhead-right green-text'>+{totTotalPercent}%</div>
+                                }
+                                {totTotalPercent < 0 &&
+                                    <div className='col-2 ownhead-right red-text'>{totTotalPercent}%</div>
+                                }
+                            </div>
                         </div>
                     </CardBody>
                 </Card>
@@ -187,6 +238,36 @@ function StockOwn({stockOwnData, showDelete}) {
                                 </div>
                             ))
                         }
+                        <div className='row ownhead-row owntotal'>
+                            <div className='col-2 ownhead-symbol'>Account Total</div>
+                            {totTodayGainLoss >= 0 &&
+                                <div className='col-4 ownhead-right green-text'><CurrencyFormat value={totTodayGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            {totTodayGainLoss < 0 &&
+                                <div className='col-4 ownhead-right red-text'><CurrencyFormat value={totTodayGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            {totTotalGainLoss >= 0 &&
+                                <div className='col-2 ownhead-right green-text'><CurrencyFormat value={totTotalGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            {totTotalGainLoss < 0 &&
+                                <div className='col-2 ownhead-right red-text'><CurrencyFormat value={totTotalGainLoss} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            <div className='col-2 ownhead-right'><CurrencyFormat value={totCurrValue} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                        </div>
+                        <div className='row'>
+                            {totTodayPercent >= 0 &&
+                                <div className='col-6 ownhead-right green-text'><CurrencyFormat value={totTodayPercent} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            {totTodayPercent < 0 &&
+                                <div className='col-6 ownhead-right red-text'><CurrencyFormat value={totTodayPercent} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            {totTotalPercent >= 0 &&
+                                <div className='col-2 ownhead-right green-text'><CurrencyFormat value={totTotalPercent} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                            {totTotalPercent < 0 &&
+                                <div className='col-2 ownhead-right red-text'><CurrencyFormat value={totTotalPercent} displayType={'text'} thousandSeparator={true} prefix={'$'} /></div>
+                            }
+                        </div>
                     </div>
                 </CardBody>
             </Card>

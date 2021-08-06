@@ -33,13 +33,16 @@ class StockLookupApi {
     static async getStockOwn(stock) {
         let stockObj;
         try {
+            console.log('in get stock own');
             const resp = await axios(`${BASE_URL}/quote/${stock}?apikey=${API_KEY}`);
+            console.log('resp ', resp);
             stockObj = {
                 ticker: resp.data[0].symbol, 
                 name: resp.data[0].name, 
                 price: resp.data[0].price, 
                 changePercent: resp.data[0].changesPercentage,
-                change: resp.data[0].change
+                change: resp.data[0].change,
+                previousClose: resp.data[0].previousClose
             }
         } catch (e) {
             console.log('error getting stock own ', e);

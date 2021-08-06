@@ -25,6 +25,8 @@ function StocksOwnList() {
                 stockObj.price = ownInfo.price;
                 stockObj.changePercent = ownInfo.changePercent;
                 stockObj.change = ownInfo.change;
+                stockObj.previousClose = ownInfo.previousClose;
+                console.log('prev close ', ownInfo.previousClose);
                 stockArr.push(stockObj);
             }
             setStockOwnData(stockArr);
@@ -104,6 +106,7 @@ function StocksOwnList() {
                  price: respStockOwn[0].price, 
                  changePercent: respStockOwn[0].changesPercentage,
                  change: respStockOwn[0].change,
+                 previousClose: respStockOwn[0].previousClose,
                  date: date.value,
                  pricepaid: +price.value,
                  qty: +qty.value}]);
